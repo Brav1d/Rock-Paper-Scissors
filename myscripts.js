@@ -1,37 +1,50 @@
-let playerScore = 0
-let computerScore = 0
-let roundWinner = ''
+let playerScore = 0;
+let computerScore = 0;
+let roundWinner = '';
+
+let playerSelection = prompt("Rock, Paper or Scissors?");
+playerSelection = playerSelection.toUpperCase()
+const computerSelection = getComputerChoice();
 
 function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3)
-    switch (randomNumber) {
-      case 0:
-        return 'ROCK'
-      case 1:
-        return 'PAPER'
-      case 2:
-        return 'SCISSORS'
+    let randomNumber = Math.floor(Math.random() * 3);
+    let computerSelection = '';
+    if (randomNumber == 0) {
+        computerSelection = 'ROCK';
+    } else if (randomNumber == 1) {
+        computerSelection = 'PAPER';
+    } else if (randomNumber == 2) {
+        computerSelection = 'SCISSORS';
     }
-  }
+    return computerSelection;
+}
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        roundWinner = 'tie'
+        roundWinner = 'tie';
+        console.log("That's a tie, try again");
     }
     if (
-    (playerSelection === 'ROCK' && computerSelection === 'SCISSORS')
-    (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')
-    (playerSelection === 'PAPER' && computerSelection === 'ROCK')
+        (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
+        (playerSelection === 'PAPER' && computerSelection === 'ROCK')
     ) {
-        playerScore++
-        roundWinner = 'player'
+        playerScore++;
+        roundWinner = 'player';
+        console.log("You win :D");
     }
     if (
-        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') 
-        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') 
+        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
         (computerSelection === 'PAPER' && playerSelection === 'ROCK')
-      ) {
-        computerScore++
-        roundWinner = 'computer'
-      }
+    ) {
+        computerScore++;
+        roundWinner = 'computer';
+        console.log("The computer wins this time, womp womp");
+    }
 }
+
+playRound(playerSelection, computerSelection);
+console.log("Round Winner: " + roundWinner);
+console.log("Player Score: " + playerScore)
+console.log("Computer Score: " + computerScore)
