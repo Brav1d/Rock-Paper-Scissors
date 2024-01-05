@@ -2,10 +2,6 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = '';
 
-let playerSelection = prompt("Rock, Paper or Scissors?");
-playerSelection = playerSelection.toUpperCase()
-const computerSelection = getComputerChoice();
-
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     let computerSelection = '';
@@ -44,7 +40,17 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-playRound(playerSelection, computerSelection);
-console.log("Round Winner: " + roundWinner);
-console.log("Player Score: " + playerScore)
-console.log("Computer Score: " + computerScore)
+function game() {
+    while (playerScore < 5 && computerScore < 5) {
+        let playerSelection = prompt("Rock, Paper or Scissors?");
+        playerSelection = playerSelection.toUpperCase();
+        const computerSelection = getComputerChoice();
+    
+        playRound(playerSelection, computerSelection);
+        console.log("Round Winner: " + roundWinner);
+        console.log("Player Score: " + playerScore)
+        console.log("Computer Score: " + computerScore)
+    }
+}
+
+game();
