@@ -54,3 +54,10 @@ function game() {
 }
 
 game();
+
+if (computerScore == 5) {
+    console.log('you lose! ;-;')
+}
+if (playerScore == 5) {
+    console.log('you win!!! :D')
+}
